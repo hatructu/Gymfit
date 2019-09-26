@@ -47,5 +47,7 @@ export default {
   listItemMediumHeight: 50,
   buttonSizeBase: 40,
   buttonSizeSmall: 24,
-  borderRadiusSmall:12
+  borderRadiusSmall:12,
+  marginInput: 48,
+  widthInput: screenWidth-90,
 };

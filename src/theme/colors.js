@@ -3,7 +3,7 @@
  */
 const app = {
   white: '#FFF',
-  
+  background:'#40C023',
 };
 
 

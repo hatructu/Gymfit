@@ -12,6 +12,7 @@ import ListUser from '@user/ListUser'
 import ListExercise from '@exercise/ListExercise'
 import Calendar from '@calendar/Calendar'
 import Report from '@report/Report'
+import Login from './Login'
 const TabsIcon = ({ ...props }) => {
     const { focused, iconActive, iniconActive } = props
     return (
@@ -27,8 +28,16 @@ const tabScreen = () => {
             <Stack
                 hideNavBar={true}
             >
+                <Stack>
+                    <Scene
+                        key='login'
+                        component={Login}
+                        initial
+                    />
+                </Stack>
                 <Tabs
                     showLabel={false}
+                    key='tabs'
                 >
                     <Stack
                         hideNavBar={true}
@@ -38,7 +47,7 @@ const tabScreen = () => {
                     >
                         <Scene
                             component={ListUser}
-                            initial
+                            key='listUser'
                         />
                     </Stack>
 
@@ -50,6 +59,7 @@ const tabScreen = () => {
                     >
                         <Scene
                             component={ListExercise}
+                            key='ListExercise'
                         />
                     </Stack>
 
@@ -61,6 +71,7 @@ const tabScreen = () => {
                     >
                         <Scene
                             component={Calendar}
+                            key='Calendar'
                         />
                     </Stack>
 
@@ -72,6 +83,7 @@ const tabScreen = () => {
                     >
                         <Scene
                             component={Report}
+                            key='Report'
                         />
                     </Stack>
                 </Tabs>
