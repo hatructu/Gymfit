@@ -31,8 +31,8 @@ const tabScreen = () => {
                     <Stack
                         hideNavBar={true}
                         icon={TabsIcon}
-                        iconActive={require('@icons/users_check')}
-                        iniconActive={require('@icons/users_check')}
+                        iconActive={require('@icons/users_check.png')}
+                        iniconActive={require('@icons/users_check.png')}
                     >
                         <Scene
                             component={ListUser}
