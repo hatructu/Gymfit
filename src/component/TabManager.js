@@ -7,12 +7,12 @@ import {
     Image,
 } from 'react-native'
 import { Router, Scene, Stack, Tabs } from 'react-native-router-flux'
-import {Icon} from 'react-native-elements'
-import ListUser from './listUser/ListUser'
-import ListExercise from './listExercise/ListExercise'
-import Calendar from './calendar/Calendar'
-import Report from './report/Report'
-const TabsIcon = ({...props }) => {
+import { Icon } from 'react-native-elements'
+import ListUser from '@user/ListUser'
+import ListExercise from '@exercise/ListExercise'
+import Calendar from '@calendar/Calendar'
+import Report from '@report/Report'
+const TabsIcon = ({ ...props }) => {
     const { focused, iconActive, iniconActive } = props
     return (
         <View>
