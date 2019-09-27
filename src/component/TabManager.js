@@ -7,12 +7,12 @@ import {
     Image,
 } from 'react-native'
 import { Router, Scene, Stack, Tabs } from 'react-native-router-flux'
-import { Icon } from 'react-native-elements'
 import ListUser from '@user/ListUser'
 import ListExercise from '@exercise/ListExercise'
 import Calendar from '@calendar/Calendar'
 import Report from '@report/Report'
 import Login from './Login'
+import AddMembers from '@user/AddMembers'
 const TabsIcon = ({ ...props }) => {
     const { focused, iconActive, iniconActive } = props
     return (
@@ -33,6 +33,12 @@ const tabScreen = () => {
                     key='login'
                     component={Login}
                     initial
+                />
+                <Scene
+                    hideNavBar
+                    key='addmembers'
+                    component={AddMembers}
+                    
                 />
                 <Tabs
                     showLabel={false}
