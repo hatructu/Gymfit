@@ -5,8 +5,8 @@ const app = {
   background:'#40C023',
   white: '#ffffff',
   gray :'#A4A4A4',
-  green:'#31B404',
   orange:'#FF8000',
+  backgroundRegister:'#333542'
 };
 
 

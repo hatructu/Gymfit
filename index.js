@@ -11,4 +11,4 @@ import Login from './src/component/Login'
 
 AppRegistry.registerComponent(appName, () => tabScreen);
 
-// AppRegistry.registerComponent(appName, () => Login);
+

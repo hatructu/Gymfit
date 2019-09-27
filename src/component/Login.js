@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { AppSizes, AppColors } from '@theme'
 import {Actions} from 'react-native-router-flux'
 import {Messages} from '@constant'
-import { Action } from 'rxjs/internal/scheduler/Action'
+
 
 
 
@@ -59,7 +59,8 @@ export default class Login extends Component {
                         <Button
                             buttonStyle={{ backgroundColor: AppColors.background, width: AppSizes.screen.width - 90, }}
                             title='Đăng ký'
-                            onPress={()=>Actions.register()}
+                            onPress={()=>Actions.replace("register")}
+
                         />
                     </View>
                     <Divider style={{ backgroundColor: 'black', width: AppSizes.screen.width - 90, marginTop: AppSizes.buttonSizeSmall }} />

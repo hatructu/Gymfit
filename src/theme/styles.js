@@ -16,9 +16,22 @@ export default {
   },
   whiteText:{
     color: Colors.white,
+    fontSize: Sizes.fontMedium,
+    marginTop: Sizes.marginSml,
+    alignItems: 'flex-end',
+  },
+
+  button:{
+    width:Sizes.buttonSizeWidth,
+    margin:Sizes.paddingSml,
+    height:Sizes.buttonSizeBase,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:Colors.background,
+    borderRadius:Sizes.paddingSml,
   },
   appContainerRegister:{
-    backgroundColor:'#333542',
+    backgroundColor:Colors.backgroundRegister,
     flex: 1,
     alignItems: 'center',
     flexDirection:'column',
