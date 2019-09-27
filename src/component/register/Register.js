@@ -1,17 +1,43 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, SafeAreaView, StyleSheet, Alert, } from 'react-native';
 import {AppColors, AppFonts, AppStyles, AppSizes} from '@theme'
 
 import { Actions } from 'react-native-router-flux';
+import {Data, TABLE_USER, GYMER, EXERCISE, CALENDAR, CALENDAR_DETAIL} from '@datas'
+
+import {Messages} from '@constant'
+
 
 export default class Register extends Component{
 
     constructor(props){
         super(props);
         this.state={
+            id:'',
             username:'',
             email:'',
             password:''
+        }
+    }
+
+    _onPressRegister=()=>{
+        if(this.state.username.length == ""){
+            Alert.alert('Không được để trống tài khoản')
+        } if( this.state.email.length ==""){
+            Alert.alert('Không được để trống email')
+        } if( this.state.password.length==""){
+            Alert.alert('Không được để trống mật khẩu')
+        } else{
+            Data.write(()=>{
+                Data.create(TABLE_USER,{
+                    id: Math.floor(Date.now() / 1000),
+                    username: this.state.username,
+                    email: this.state.email,
+                    password: this.state.password,
+                })
+            })
+            Actions.replace('login')
+            Alert.alert
         }
     }
 
@@ -23,27 +49,28 @@ export default class Register extends Component{
                     <Text style={styles.texts}>Đăng ký</Text>
                     
                     <Text style={AppStyles.whiteText}>Tài khoản</Text>
-                    <TextInput style={styles.textInput}
-                        placeholder='Mời nhập tài khoản'
-                        placeholderTextColor='#A4A4A4'
+                    <TextInput style={AppStyles.textInput}
+                        placeholder={Messages.registerScreen.userName}
+                        placeholderTextColor={AppColors.gray}
+                        onChangeText={(text)=>this.setState({username:text})}
                     />
                     <Text style={[AppStyles.whiteText]}>Email</Text>
-                    <TextInput style={styles.textInput}
-                        placeholder='Mời nhập email'
+                    <TextInput style={AppStyles.textInput}
+                        placeholder={Messages.registerScreen.email}
                         placeholderTextColor={AppColors.gray}
-                        
+                        onChangeText={(text)=>this.setState({email:text})}
                     />
                     <Text style={AppStyles.whiteText}>Mật khẩu</Text>
-                    <TextInput style={styles.textInput}
-                        placeholder='Mời nhập mật khẩu'
-                        placeholderTextColor='#A4A4A4'
-                        
+                    <TextInput style={AppStyles.textInput}
+                        placeholder={Messages.registerScreen.password}
+                        placeholderTextColor={AppColors.gray}
+                        onChangeText={(text)=>this.setState({password:text})}
                     />
-                    <TouchableOpacity style={AppStyles.button}>
+                    <TouchableOpacity style={[AppStyles.button, {marginTop:15}]} onPress={this._onPressRegister}>
                         <Text style={{color:AppColors.white, fontSize:AppSizes.paddingMedium}}>Tạo tài khoản</Text>
                     </TouchableOpacity>
                     <Text style={AppStyles.whiteText} >
-                        Nếu bạn đã có tài khoản! <Text style={styles.textLogin} onPress={()=>Actions.login()}>Mời đăng nhập</Text>
+                        Nếu bạn đã có tài khoản! <Text style={styles.textLogin} onPress={()=>Actions.replace("login")}>Mời đăng nhập</Text>
                     </Text>
                     
                 </SafeAreaView>
@@ -54,14 +81,7 @@ export default class Register extends Component{
 }
 
 const styles = StyleSheet.create({
-    textInput:{
-        borderRadius:AppSizes.paddingSml,
-        borderWidth:AppSizes.borderWidth,
-        borderColor:AppColors.gray,
-        width:AppSizes.buttonSizeWidth,
-        height:AppSizes.buttonSizeBase,
-        paddingHorizontal: AppSizes.paddingSml,
-    },
+    
     texts:{
         color:AppColors.white,
         fontSize:AppSizes.fontXL, 

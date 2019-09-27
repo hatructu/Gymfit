@@ -8,8 +8,10 @@ export default {
         TABLE_USER:'tableUser'
     },
     registerScreen:{
-        userName: "User Name",
-        password: "Password"
+        
+        userName: "Nhập tài khoản",
+        password: "Nhập mật khẩu",
+        email: "Nhập email",
     }
 
 }

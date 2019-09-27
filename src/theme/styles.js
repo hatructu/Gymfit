@@ -17,10 +17,20 @@ export default {
   whiteText:{
     color: Colors.white,
     fontSize: Sizes.fontMedium,
-    marginTop: Sizes.marginSml,
+    marginTop: Sizes.fontSmall,
+    marginBottom: Sizes.paddingXXSml ,
     alignItems: 'flex-end',
-  },
 
+  },
+  textInput:{
+    borderRadius:Sizes.paddingSml,
+    borderWidth:Sizes.borderWidth,
+    borderColor:Colors.gray,
+    width:Sizes.buttonSizeWidth,
+    height:Sizes.buttonSizeBase,
+    paddingHorizontal: Sizes.paddingSml,
+    color:Colors.white
+  },
   button:{
     width:Sizes.buttonSizeWidth,
     margin:Sizes.paddingSml,
