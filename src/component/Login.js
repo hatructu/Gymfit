@@ -6,12 +6,14 @@ import {
     StyleSheet,
     TouchableOpacity,
     Image,
+    SafeAreaView
 } from 'react-native'
 import { Input, Button, SocialIcon, Divider } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { AppSizes, AppColors } from '@theme'
 import {Actions} from 'react-native-router-flux'
 import {Messages} from '@constant'
+import { Action } from 'rxjs/internal/scheduler/Action'
 
 
 
@@ -19,6 +21,7 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <SafeAreaView>
                 <View style={styles.logo}>
                     <Image source={require('@icons/logo_gym.png')} style={{ height: 112, width: 112, }} />
                 </View>
@@ -49,13 +52,14 @@ export default class Login extends Component {
                         <Button
                             buttonStyle={{ backgroundColor: AppColors.background, width: AppSizes.screen.width - 90, }}
                             title='Đăng nhập'
-                            onPress={()=>Actions.tabs()}
+                            onPress={()=>Actions.replace("tabs")}
                         />
                     </View>
                     <View style={styles.btnLogin}>
                         <Button
                             buttonStyle={{ backgroundColor: AppColors.background, width: AppSizes.screen.width - 90, }}
                             title='Đăng ký'
+                            onPress={()=>Actions.register()}
                         />
                     </View>
                     <Divider style={{ backgroundColor: 'black', width: AppSizes.screen.width - 90, marginTop: AppSizes.buttonSizeSmall }} />
@@ -80,6 +84,7 @@ export default class Login extends Component {
                         <Text>{Messages.loginScreen.version}</Text>
                     </View>
                 </View>
+                </SafeAreaView>
             </View>
         )
     }

@@ -13,6 +13,7 @@ import Calendar from '@calendar/Calendar'
 import Report from '@report/Report'
 import Login from './Login'
 import AddMembers from '@user/AddMembers'
+import Register from './register/Register'
 const TabsIcon = ({ ...props }) => {
     const { focused, iconActive, iniconActive } = props
     return (
@@ -25,6 +26,7 @@ const TabsIcon = ({ ...props }) => {
 const tabScreen = () => {
     return (
         <Router>
+            
             <Stack
                 hideNavBar={true}
             >
@@ -40,6 +42,10 @@ const tabScreen = () => {
                     component={AddMembers}
                     
                 />
+                <Scene 
+                        key='register'
+                        component={Register}
+                    />
                 <Tabs
                     showLabel={false}
                     key='tabs'

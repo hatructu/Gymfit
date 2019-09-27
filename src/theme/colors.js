@@ -2,8 +2,11 @@
  * App Theme - Colors
  */
 const app = {
-  white: '#FFF',
   background:'#40C023',
+  white: '#ffffff',
+  gray :'#A4A4A4',
+  green:'#31B404',
+  orange:'#FF8000',
 };
 
 
@@ -11,6 +14,10 @@ const app = {
 const text = {
   
 };
+
+const button={
+
+}
 
 const borders = {
   border: '#DFDFDF',
@@ -25,6 +32,7 @@ const dialog = {
 export default {
   ...app,
   ...text,
+  ...button,
   ...borders,
   ...dialog,
 
