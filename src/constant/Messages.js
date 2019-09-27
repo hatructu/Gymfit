@@ -1,8 +1,8 @@
 
 export default {
     loginScreen:{
-        userName: "User Name",
-        password: "Password",
+        userName: "Nhập tài khoản hoặc email",
+        password: "Nhập mật khẩu",
         forgotPassword: 'Quên mật khẩu?',
         version:'version 1.0',
         TABLE_USER:'tableUser'
