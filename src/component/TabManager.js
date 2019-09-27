@@ -28,13 +28,12 @@ const tabScreen = () => {
             <Stack
                 hideNavBar={true}
             >
-                <Stack>
-                    <Scene
-                        key='login'
-                        component={Login}
-                        initial
-                    />
-                </Stack>
+                <Scene
+                    hideNavBar
+                    key='login'
+                    component={Login}
+                    initial
+                />
                 <Tabs
                     showLabel={false}
                     key='tabs'
