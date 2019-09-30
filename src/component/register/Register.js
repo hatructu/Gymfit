@@ -16,17 +16,22 @@ export default class Register extends Component{
             id:'',
             username:'',
             email:'',
-            password:''
+            password:'',
         }
     }
 
     _onPressRegister=()=>{
+        const {username} = this.state
+        var user_detail = Data.objects(TABLE_USER).filtered(`username = "${username}"`)
+        
         if(this.state.username.length == ""){
             Alert.alert('Không được để trống tài khoản')
         } if( this.state.email.length ==""){
             Alert.alert('Không được để trống email')
         } if( this.state.password.length==""){
             Alert.alert('Không được để trống mật khẩu')
+        } if(user_detail.length>0){
+            alert('Tên tài khoản đã bị trùng, mời nhập lại')
         } else{
             Data.write(()=>{
                 Data.create(TABLE_USER,{
@@ -36,9 +41,18 @@ export default class Register extends Component{
                     password: this.state.password,
                 })
             })
-            Actions.replace('login')
-            Alert.alert
+            alert(`successful`)
+            console.log("Thang:", JSON.stringify(Data.objects(TABLE_USER) ))
+            // Actions.replace('login')
+            // Alert.alert
         }
+    }
+
+    _getData=()=>{
+        const listAccount = Data.objects(TABLE_USER)
+        const user = JSON.stringify(Data.objects(TABLE_USER))
+        if(JSON.stringify(Data.objects(TABLE_USER)))
+        return listAccount
     }
 
 
@@ -48,21 +62,21 @@ export default class Register extends Component{
                 <SafeAreaView style={AppStyles.appContainerRegister}>  
                     <Text style={styles.texts}>Đăng ký</Text>
                     
-                    <Text style={AppStyles.whiteText}>Tài khoản</Text>
+                    <Text style={AppStyles.whiteText}>{Messages.registerScreen.userName}</Text>
                     <TextInput style={AppStyles.textInput}
-                        placeholder={Messages.registerScreen.userName}
+                        placeholder={Messages.registerScreen.inputUserName}
                         placeholderTextColor={AppColors.gray}
                         onChangeText={(text)=>this.setState({username:text})}
                     />
-                    <Text style={[AppStyles.whiteText]}>Email</Text>
+                    <Text style={[AppStyles.whiteText]}>{Messages.registerScreen.email}</Text>
                     <TextInput style={AppStyles.textInput}
-                        placeholder={Messages.registerScreen.email}
+                        placeholder={Messages.registerScreen.inputEmail}
                         placeholderTextColor={AppColors.gray}
                         onChangeText={(text)=>this.setState({email:text})}
                     />
-                    <Text style={AppStyles.whiteText}>Mật khẩu</Text>
+                    <Text style={AppStyles.whiteText}>{Messages.registerScreen.password}</Text>
                     <TextInput style={AppStyles.textInput}
-                        placeholder={Messages.registerScreen.password}
+                        placeholder={Messages.registerScreen.inputPassword}
                         placeholderTextColor={AppColors.gray}
                         onChangeText={(text)=>this.setState({password:text})}
                     />
@@ -70,7 +84,7 @@ export default class Register extends Component{
                         <Text style={{color:AppColors.white, fontSize:AppSizes.paddingMedium}}>Tạo tài khoản</Text>
                     </TouchableOpacity>
                     <Text style={AppStyles.whiteText} >
-                        Nếu bạn đã có tài khoản! <Text style={styles.textLogin} onPress={()=>Actions.replace("login")}>Mời đăng nhập</Text>
+                        Nếu bạn đã có tài khoản! <Text style={styles.textLogin} onPress={()=>Actions.replace("login")}>Đăng nhập!</Text>
                     </Text>
                     
                 </SafeAreaView>
