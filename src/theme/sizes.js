@@ -38,6 +38,7 @@ export default {
   fontMedium: 16,
   fontLarge: 20,
   fontXL:26,
+  fontTittle: 32,
   imageSizeBase: 20,
   roundBorderRadius: 20,
   borderWidth:1,
@@ -52,5 +53,5 @@ export default {
   buttonSizeWidth:300,
   borderRadiusSmall:12,
   marginInput: 48,
-  widthInput: screenWidth-90,
+  widthInput: screenWidth*6/10,
 };

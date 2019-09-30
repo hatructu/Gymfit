@@ -21,7 +21,7 @@ export const Gymer = {
     properties: {
         id: 'int?',
         name: 'string?',
-        sex: 'string?',
+        sex: 'bool?',
         weight: 'int?',
         height: 'int?',
         bodymath: 'int?',
@@ -44,9 +44,9 @@ export const Calendar = {
     name: CALENDAR,
     properties: {
         id: 'int?',
-        date: 'date?',
+        date: 'int?',
         id_gymer:'int?',
-        status:'int?'
+        status:'bool?'
     }
 }
 
@@ -54,9 +54,10 @@ export const Calendar_detail = {
     name: CALENDAR_DETAIL,
     properties: {
         id: 'int?',
+        date:'int?',
         id_calendar:'int?',
         id_exercise:'int?',
-        status:'int?'
+        status:'bool?'
     }
 }
 export {TABLE_USER, GYMER, EXERCISE, CALENDAR, CALENDAR_DETAIL }
