@@ -14,6 +14,15 @@ export default {
         inputUserName: "Nhập tài khoản",
         inputPassword: "Nhập mật khẩu",
         inputEmail: "Nhập email",
+    },
+
+    addExercise:{
+        nameEx: 'Tên bài tập',
+        roundEx: 'Số hiệp',
+        pointEx: 'Điểm của bài tập',
+        inputName:'Nhập tên bài tập',
+        inputRound: 'Nhập số hiệp',
+        inputPoint: 'Nhập số điểm'
     }
 
 }

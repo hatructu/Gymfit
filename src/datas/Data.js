@@ -35,7 +35,8 @@ export const Exercise = {
         id: 'int?',
         name: 'string?',
         round:'int?',
-        point:'int?'
+        point:'int?',
+        image:'string?'
     }
 }
 

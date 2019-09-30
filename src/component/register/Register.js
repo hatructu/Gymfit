@@ -21,6 +21,7 @@ export default class Register extends Component{
     }
 
     _onPressRegister=()=>{
+        //loc dieu kien username
         const {username} = this.state
         var user_detail = Data.objects(TABLE_USER).filtered(`username = "${username}"`)
         
@@ -43,17 +44,11 @@ export default class Register extends Component{
             })
             alert(`successful`)
             console.log("Thang:", JSON.stringify(Data.objects(TABLE_USER) ))
-            // Actions.replace('login')
-            // Alert.alert
+            Actions.replace('login')
+            
         }
     }
 
-    _getData=()=>{
-        const listAccount = Data.objects(TABLE_USER)
-        const user = JSON.stringify(Data.objects(TABLE_USER))
-        if(JSON.stringify(Data.objects(TABLE_USER)))
-        return listAccount
-    }
 
 
     render(){
