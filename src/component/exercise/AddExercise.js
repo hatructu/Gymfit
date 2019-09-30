@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, SafeAreaView,Image, StyleSheet, Alert, Button, } from 'react-native';
+import { View, Text, TextInput, SafeAreaView,Image, StyleSheet, Alert, Button, } from 'react-native';
 import {AppColors, AppFonts, AppStyles, AppSizes} from '@theme'
 
 import { Actions } from 'react-native-router-flux';
@@ -7,6 +7,13 @@ import {Data, TABLE_USER, GYMER, EXERCISE, CALENDAR, CALENDAR_DETAIL} from '@dat
 
 import {Messages} from '@constant'
 import ImagePicker from 'react-native-image-picker';
+
+const options={
+    title: 'Choose Image',
+    takePhotoButtonTitle: 'Take photo',
+    chooseFromLibraryButtonTitle: 'Choose library',
+  }
+
 export default class AddExercise extends Component{
 
     constructor(props){
@@ -16,20 +23,21 @@ export default class AddExercise extends Component{
             nameEx:'',
             roundEx:'',
             pointEx:'',
-            imageEx:''
+            imageEx:null
         }
     }
+
     choosePhoto=()=>{
-        const {imageEx} = this.state 
-        const options = {}
-        ImagePicker.launchImageLibrary(options, response =>{
-            if(response.uri){
-                this.setState({imageEx:response});
+        ImagePicker.showImagePicker(options, (response)=>{
+            console.log('Response = ', response)
+            if(response.didCancel){
+                console.log('User cancelled image picker');
             }
         })
     }
 
     render() {
+        const {imageEx} = this.state 
       return (
         <View style={AppStyles.appContainerRegister}>
           <SafeAreaView style={AppStyles.appContainerRegister}>
@@ -53,15 +61,14 @@ export default class AddExercise extends Component{
                         placeholderTextColor={AppColors.gray}
                         onChangeText={(text)=>this.setState({password:text})}
                     />
-                    <View style={{flex:1, justifyContent:'center'}}>
+                    <View style={{flex:1, justifyContent:'center', flexDirection:'row'}}>
                         <Button 
                             title="Choose Photo"
                             onPress = {this.choosePhoto}
                         />
-                        <Image 
-                            source={{uri:imageEx.uri}}
-                            style={{width:200, height:100}}
-                        />
+                        
+                        
+                        
                     </View>
           </SafeAreaView>
         </View>
