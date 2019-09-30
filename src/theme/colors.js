@@ -6,7 +6,9 @@ const app = {
   white: '#ffffff',
   gray :'#A4A4A4',
   orange:'#FF8000',
-  backgroundRegister:'#333542'
+  backgroundRegister:'#333542',
+  backgroundBtn:'#C0C0C0',
+
 };
 
 

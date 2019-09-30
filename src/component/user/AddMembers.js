@@ -6,33 +6,36 @@ import {
     StyleSheet,
     TouchableOpacity,
     Image,
+    Alert
 } from 'react-native'
 import { Icon, Input, CheckBox, Button, Avatar } from 'react-native-elements'
 import { AppColors, AppSizes } from '@theme'
-import Messages from '@constant'
-import {Data} from '@datas'
+import { Messages } from '@constant'
+import { Actions } from 'react-native-router-flux'
+import { Data, TABLE_USER, GYMER, EXERCISE, CALENDAR, CALENDAR_DETAIL, } from '@datas'
 
 export default class AddMembers extends Component {
     constructor(props) {
         super(props)
         this.state = {
             isMale: false,
-            nameMember:'',
-            dateOfBirth:'',
-            sex:'',
-            weight:0,
-            height:0,
-            linkimg:'',
+            nameMember: '',
+            dateOfBirth: '',
+            sex: '',
+            weight: 0,
+            height: 0,
+            linkimg: '',
+            bodymath: 0,
         }
     }
 
-    
+
     render() {
         return (
-            <ScrollView>
+            <ScrollView >
                 <View style={styles.container}>
                     <View>
-                        <Text style={styles.tittle}>Thêm Thành Viên</Text>
+                        <Text style={styles.tittle}>{Messages.loginScreen.addmember}</Text>
                     </View>
 
                     <View style={styles.inputView}>
@@ -47,9 +50,9 @@ export default class AddMembers extends Component {
                         />
 
                         <Input
-                            placeholder='Nhập tên thành viên'
+                            placeholder={Messages.loginScreen.addname}
                             containerStyle={styles.input}
-                            onChangeText={(text)=> this.setState({nameMember: text})}
+                            onChangeText={(text) => this.setState({ nameMember: text })}
                         />
                         <View style={{ flexDirection: 'row', marginTop: 16, }}>
                             <CheckBox
@@ -59,11 +62,11 @@ export default class AddMembers extends Component {
                                 uncheckedIcon='circle-o'
                                 onPress={() => {
                                     this.setState({ isMale: !this.state.isMale })
-                                    
+
                                 }}
                                 checkedColor={AppColors.background}
                                 checked={this.state.isMale}
-                                containerStyle={{backgroundColor:''}}
+                                containerStyle={{ backgroundColor: '' }}
                             />
                             <CheckBox
                                 title='Nữ'
@@ -72,26 +75,32 @@ export default class AddMembers extends Component {
                                 checkedColor={AppColors.background}
                                 onPress={() => this.setState({ isMale: !this.state.isMale })}
                                 checked={!this.state.isMale}
-                                containerStyle={{backgroundColor:''}}
+                                containerStyle={{ backgroundColor: '' }}
                             />
                         </View>
                         <Input
-                            placeholder='01/01/1980'
+                            placeholder={Messages.loginScreen.adddob}
                             keyboardType='default'
                             containerStyle={styles.input}
-                            onChangeText={(text)=> this.setState({dateOfBirth: text})}
+                            onChangeText={(text) => this.setState({ dateOfBirth: text })}
                         />
                         <Input
-                            placeholder='Nhập chiều cao(cm)'
+                            placeholder={Messages.loginScreen.addheight}
                             keyboardType='numeric'
                             containerStyle={styles.input}
-                            onChangeText={(text)=> this.setState({height: text})}
+                            onChangeText={(text) => this.setState({ height: parseInt(text, 10) })}
                         />
                         <Input
-                            placeholder='Nhập cân nặng(kg)'
+                            placeholder={Messages.loginScreen.addweight}
                             keyboardType='numeric'
                             containerStyle={styles.input}
-                            onChangeText={(text)=> this.setState({weight: text})}
+                            onChangeText={(text) => this.setState({ weight: parseInt(text, 10) })}
+                        />
+                        <Input
+                            placeholder={Messages.loginScreen.bodymath}
+                            keyboardType='numeric'
+                            containerStyle={styles.input}
+                            onChangeText={(text) => this.setState({ bodymath: parseInt(text, 10) })}
                         />
 
                         <Button
@@ -99,7 +108,30 @@ export default class AddMembers extends Component {
                             title='Lưu'
                             containerStyle={styles.input}
                             buttonStyle={{ backgroundColor: AppColors.background, width: AppSizes.widthInput }}
-                            onPress={()=>{
+                            onPress={() => {
+                                if (this.state.nameMember.length == 0 ||
+                                    this.state.dateOfBirth.length == 0 ||
+                                    this.state.weight.length == 0 ||
+                                    this.state.height.length == 0
+                                ) {
+                                    alert('Cảnh báo', Messages.loginScreen.msg)
+                                } else {
+                                    Data.write(() => {
+                                        Data.create(GYMER, {
+                                            id: Math.floor(Date.now() / 1000),
+                                            name: this.state.nameMember,
+                                            sex: this.state.isMale,
+                                            height: this.state.height,
+                                            weight: this.state.weight,
+                                            bodymath: this.state.bodymath,
+                                            avatar: this.state.avatar
+
+                                        })
+                                    })
+                                    console.log("van:", Data.objects(GYMER).length)
+
+                                    Actions.pop()
+                                }
 
                             }}
                         />
