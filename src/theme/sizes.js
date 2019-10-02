@@ -54,4 +54,6 @@ export default {
   borderRadiusSmall:12,
   marginInput: 48,
   widthInput: screenWidth*6/10,
+  widthImage:300,
+  heightImage:200
 };

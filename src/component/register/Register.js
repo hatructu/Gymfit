@@ -17,10 +17,15 @@ export default class Register extends Component{
             username:'',
             email:'',
             password:'',
+            Error:''
         }
     }
 
-    _onPressRegister=()=>{
+    validation=()=>{
+        
+    }
+
+    onPressRegister=()=>{
         //loc dieu kien username
         const {username} = this.state
         var user_detail = Data.objects(TABLE_USER).filtered(`username = "${username}"`)
@@ -75,7 +80,8 @@ export default class Register extends Component{
                         placeholderTextColor={AppColors.gray}
                         onChangeText={(text)=>this.setState({password:text})}
                     />
-                    <TouchableOpacity style={[AppStyles.button, {marginTop:15}]} onPress={this._onPressRegister}>
+                    <Text>{this.state.Error}</Text>
+                    <TouchableOpacity style={[AppStyles.button, {marginTop:15}]} onPress={this.onPressRegister}>
                         <Text style={{color:AppColors.white, fontSize:AppSizes.paddingMedium}}>Tạo tài khoản</Text>
                     </TouchableOpacity>
                     <Text style={AppStyles.whiteText} >

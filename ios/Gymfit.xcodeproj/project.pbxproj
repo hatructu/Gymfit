@@ -56,7 +56,7 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "Gymfit-tvOS";
 		};
-		8F7ACEF02344638600024DA1 /* PBXContainerItemProxy */ = {
+		8F7ACED823445E3E00024DA1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDE327F8A6CE468BA53DB5CC /* RealmReact.xcodeproj */;
 			proxyType = 2;
@@ -218,7 +218,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E0B934C1098C4493A9E67585 /* Resources */,
 				DA1F89E7D1C5A2EB091DA385 /* Pods */,
-				8F7ACEEB2344638500024DA1 /* Recovered References */,
+				8F7ACED323445E3D00024DA1 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8F7ACEEB2344638500024DA1 /* Recovered References */ = {
+		8F7ACED323445E3D00024DA1 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				383F601601D34743B2D71CDD /* libRealmReact.a */,
@@ -244,10 +244,10 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		8F7ACEED2344638600024DA1 /* Products */ = {
+		8F7ACED523445E3D00024DA1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8F7ACEF12344638600024DA1 /* libRealmReact.a */,
+				8F7ACED923445E3E00024DA1 /* libRealmReact.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -410,7 +410,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8F7ACEED2344638600024DA1 /* Products */;
+					ProductGroup = 8F7ACED523445E3D00024DA1 /* Products */;
 					ProjectRef = EDE327F8A6CE468BA53DB5CC /* RealmReact.xcodeproj */;
 				},
 			);
@@ -425,11 +425,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		8F7ACEF12344638600024DA1 /* libRealmReact.a */ = {
+		8F7ACED923445E3E00024DA1 /* libRealmReact.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRealmReact.a;
-			remoteRef = 8F7ACEF02344638600024DA1 /* PBXContainerItemProxy */;
+			remoteRef = 8F7ACED823445E3E00024DA1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

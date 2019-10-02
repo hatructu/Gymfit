@@ -46,5 +46,19 @@ export default {
     alignItems: 'center',
     flexDirection:'column',
     justifyContent: 'center',
+  },
+  appListExercise:{
+    backgroundColor:Colors.white,
+    flex: 1,
+    
+
+
+  },
+  images:{
+    width:Sizes.widthImage,
+    height:Sizes.heightImage,
+    borderColor:Colors.white,
+    borderWidth:Sizes.borderWidth,
+    
   }
 }
