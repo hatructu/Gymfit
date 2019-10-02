@@ -25,7 +25,8 @@ export const Gymer = {
         weight: 'int?',
         height: 'int?',
         bodymath: 'int?',
-        avatar: 'string?'
+        avatar: 'string?',
+        phoneNumber:'string?',
     }
 }
 

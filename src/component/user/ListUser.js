@@ -13,7 +13,6 @@ import { Actions } from 'react-native-router-flux'
 import { Data, GYMER } from '@datas'
 import Swipeout from 'react-native-swipeout'
 
-
 class CustomItem extends Component {
     render() {
         const item = this.props.item
@@ -39,7 +38,7 @@ class CustomItem extends Component {
 
                 <View>
                     <ListItem
-                        leftAvatar={{ source: { uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' } }}
+                        leftAvatar={{source:{uri: this.props.item.avatar}}}
                         title={this.props.item.name}
                         subtitle={this.props.item.bodymath}
                         bottomDivider

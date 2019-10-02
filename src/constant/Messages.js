@@ -1,7 +1,7 @@
 
 export default {
     loginScreen:{
-        userName: "Nhập tài khoản hoặc email",
+        userName: "Nhập tài khoản",
         password: "Nhập mật khẩu",
         login:'Đăng nhập',
         register:'Đăng ký',
@@ -15,7 +15,8 @@ export default {
         addweight:'Nhập cân nặng(kg)',
         addheight:'Nhập chiều cao(cm)',
         bodymath:'Điểm thể hình',
-        msg:'Bạn chưa nhập tài khoản hoặc mật khẩu'
+        msg:'Bạn chưa nhập tài khoản hoặc mật khẩu',
+        phoneNumber:'Số điện thoại'
     },
     registerScreen:{
         userName: "Tài khoản",
