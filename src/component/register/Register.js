@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, TextInput, SafeAreaView, StyleSheet, Alert, } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, SafeAreaView, StyleSheet, Alert, ScrollView} from 'react-native';
 import {AppColors, AppFonts, AppStyles, AppSizes} from '@theme'
 
 import { Actions } from 'react-native-router-flux';
@@ -47,7 +47,7 @@ export default class Register extends Component{
                     password: this.state.password,
                 })
             })
-            alert(`successful`)
+            alert('successful')
             console.log("Thang:", JSON.stringify(Data.objects(TABLE_USER) ))
             Actions.replace('login')
             
@@ -58,7 +58,8 @@ export default class Register extends Component{
 
     render(){
         return(
-            <View style={AppStyles.appContainerRegister}>
+            <ScrollView contentContainerStyle={{flexGrow: 1}}
+            keyboardShouldPersistTaps='handled'>
                 <SafeAreaView style={AppStyles.appContainerRegister}>  
                     <Text style={styles.texts}>Đăng ký</Text>
                     
@@ -90,7 +91,7 @@ export default class Register extends Component{
                     
                 </SafeAreaView>
                 
-            </View>
+            </ScrollView>
         )
     }
 }

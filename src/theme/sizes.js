@@ -38,7 +38,7 @@ export default {
   fontMedium: 16,
   fontLarge: 20,
   fontXL:26,
-  fontTittle: 32,
+  fontTittle: 30,
   imageSizeBase: 20,
   roundBorderRadius: 20,
   borderWidth:1,
