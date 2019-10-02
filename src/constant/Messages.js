@@ -16,7 +16,19 @@ export default {
         addheight:'Nhập chiều cao(cm)',
         bodymath:'Điểm thể hình',
         msg:'Bạn chưa nhập tài khoản hoặc mật khẩu',
-        phoneNumber:'Số điện thoại'
+        msgInfo:'Bạn nhập thiếu thông tin!',
+        save:'Lưu',
+    },
+    calendarScreen:{
+        addCalendarTitle:'Thêm Lịch Tập',
+        addDateCalendar:'Nhập ngày tập',
+        selectExercise:'Chọn bài tập',
+        colNameExercise:'Tên bài tập',
+        colRound:'Số hiệp',
+        options:'Tùy chọn'
+    },
+    listMembers:{
+        typeHere:'Nhập ở đây'
     },
     registerScreen:{
         userName: "Tài khoản",

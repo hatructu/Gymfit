@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import {
     View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
     Image,
 } from 'react-native'
 import { Router, Scene, Stack, Tabs } from 'react-native-router-flux'
@@ -15,6 +12,8 @@ import Login from './Login'
 import AddMembers from '@user/AddMembers'
 import AddExercise from '@exercise/AddExercise'
 import Register from '@register/Register'
+import Members from '@calendar/Members'
+import AddCalendar from '@calendar/AddCalendar'
 const TabsIcon = ({ ...props }) => {
     const { focused, iconActive, iniconActive } = props
     return (
@@ -27,7 +26,7 @@ const TabsIcon = ({ ...props }) => {
 const tabScreen = () => {
     return (
         <Router>
-            
+
             <Stack
                 hideNavBar={true}
             >
@@ -41,18 +40,18 @@ const tabScreen = () => {
                     hideNavBar
                     key='addmembers'
                     component={AddMembers}
-                    
+
                 />
                 <Scene
                     hideNavBar
                     key='addexercise'
                     component={AddExercise}
-                    
+
                 />
-                <Scene 
-                        key='register'
-                        component={Register}
-                    />
+                <Scene
+                    key='register'
+                    component={Register}
+                />               
                 <Tabs
                     showLabel={false}
                     key='tabs'
@@ -91,6 +90,15 @@ const tabScreen = () => {
                             component={Calendar}
                             key='Calendar'
                         />
+                        <Scene
+                            hideNavBar
+                            key='members'
+                            component={Members}
+                        />
+                        <Scene
+                            component={AddCalendar}
+                            key='addCalendar'
+                        />
                     </Stack>
 
                     <Stack
@@ -103,6 +111,7 @@ const tabScreen = () => {
                             component={Report}
                             key='Report'
                         />
+                        
                     </Stack>
                 </Tabs>
             </Stack>
