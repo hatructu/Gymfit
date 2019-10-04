@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import {
     View,
 } from 'react-native'
-import ListMembers from '@selecting/ListMembers'
+import ListMemberSelect from '@selecting/ListMemberSelect'
+import { Actions } from 'react-native-router-flux'
 
 export default class Members extends Component{
     render(){
         return(
             <View>
-                <ListMembers/>
+                <ListMemberSelect  
+                    action={this.props.action}
+                />
             </View>
         )
     }

@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import { TouchableOpacity, View, Text, Image } from 'react-native';
-
-
-
 import {AppColors, AppFonts, AppStyles, AppSizes} from '@theme';
 import {
   Data,
