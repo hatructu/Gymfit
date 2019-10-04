@@ -26,9 +26,8 @@ export default class AddCalendar extends Component {
             selectExercise: [],
             isDateTimePickerVisible: false,
 
-            tableHead:[Messages.calendarScreen.colNameExercise, Messages.calendarScreen.colRound, Messages.calendarScreen.options],
-            tableData:[],
-            gymerData:[]
+            tableHead: [Messages.calendarScreen.colNameExercise, Messages.calendarScreen.colRound, Messages.calendarScreen.options],
+            tableData: [],
 
         }
     }
@@ -60,12 +59,12 @@ export default class AddCalendar extends Component {
                         <Input
                             placeholder={Messages.loginScreen.addname}
 
-                            containerStyle={styles.input}
-                            onChangeText={(text) => this.setState({ selectName: text })}
-                            rightIcon={<Icon name='plus' size={24} onPress={()=>
-                                Actions.members()}/>}
-                        />
-                        
+                            containerStyle={styles.input}                                                 
+                            onChange={() => this.setState({selectName: this.props.getName})}
+                            rightIcon={<Icon name='plus' size={24} onPress={() =>
+                                Actions.members({action : (text)=> this.setState({selectName:text})})} />}
+                            value={this.state.selectName}
+                        />                     
 
 
                         <Input
