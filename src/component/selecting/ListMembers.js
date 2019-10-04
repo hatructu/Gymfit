@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-    View, ScrollView, FlatList, TouchableOpacity,
+    View, ScrollView, FlatList, TouchableOpacity, SafeAreaView
 } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import { Data, GYMER } from '@datas'
@@ -68,6 +68,7 @@ export default class ListMembers extends Component {
         return (
             <ScrollView>
                 <View>
+                    <SafeAreaView>
                     <FlatList
                         data={this.state.listData}
                         renderItem={({ item, index }) => {
@@ -76,6 +77,7 @@ export default class ListMembers extends Component {
                             )
                         }}
                     />
+                    </SafeAreaView>
                 </View>
             </ScrollView>
         )

@@ -26,7 +26,7 @@ import Swipeout from 'react-native-swipeout';
 
 class ListItem extends Component {
   render() {
-    // item = this.props.item
+    item = this.props.item
     return (
       <Swipeout
         style={{margin: 5, borderRadius: 5}}
@@ -104,7 +104,7 @@ export default class ListExercise extends Component {
           />
           <ActionButton
             buttonColor={AppColors.background}
-            position="right"
+            position="center"
             style={styles.actionBtn}
             onPress={() => Actions.addexercise()}></ActionButton>
         </SafeAreaView>
