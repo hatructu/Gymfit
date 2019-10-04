@@ -52,7 +52,20 @@ const tabScreen = () => {
                 <Scene
                     key='register'
                     component={Register}
-                />               
+                />
+                <Scene                   
+                    component={ListExerciseSelect}
+                    key='listExerciseSelect'
+                />
+                <Scene
+                    component={AddCalendar}
+                    key='addCalendar'
+                />
+                <Scene
+                    hideNavBar
+                    key='members'
+                    component={Members}
+                />
                 <Tabs
                     showLabel={false}
                     key='tabs'
@@ -91,19 +104,6 @@ const tabScreen = () => {
                             component={Calendar}
                             key='Calendar'
                         />
-                        <Scene
-                            hideNavBar
-                            key='members'
-                            component={Members}
-                        />
-                        <Scene
-                            component={AddCalendar}
-                            key='addCalendar'
-                        />
-                        <Scene
-                            component={ListExerciseSelect}
-                            key='listExerciseSelect'
-                        />
                     </Stack>
 
                     <Stack
@@ -116,7 +116,7 @@ const tabScreen = () => {
                             component={Report}
                             key='Report'
                         />
-                        
+
                     </Stack>
                 </Tabs>
             </Stack>
