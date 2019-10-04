@@ -4,7 +4,12 @@ import {
 } from 'react-native'
 import { Input, Button, } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux'
-import { Data, CALENDAR } from '@datas'
+import { Data,
+    TABLE_USER,
+    GYMER,
+    EXERCISE,
+    CALENDAR,
+    CALENDAR_DETAIL, } from '@datas'
 import { Messages } from '@constant'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { AppColors, AppSizes } from '@theme'
@@ -22,6 +27,7 @@ export default class AddCalendar extends Component {
             isDateTimePickerVisible: false,
             tableHead:[Messages.calendarScreen.colNameExercise, Messages.calendarScreen.colRound, Messages.calendarScreen.options],
             tableData:[],
+            gymerData:[]
         }
     }
 
@@ -37,6 +43,7 @@ export default class AddCalendar extends Component {
         this.setState({ selectDate: moment(date).format('DD/MM/YYYY') })
         this.hideDateTimePicker()
     }
+    
 
     render() {
         return (
@@ -55,6 +62,7 @@ export default class AddCalendar extends Component {
                             rightIcon={<Icon name='plus' size={24} onPress={()=>
                                 Actions.members()}/>}
                         />
+                        
 
                         <Input
                             placeholder={Messages.calendarScreen.addDateCalendar}
