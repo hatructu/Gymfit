@@ -14,6 +14,7 @@ import AddExercise from '@exercise/AddExercise'
 import Register from '@register/Register'
 import Members from '@calendar/Members'
 import AddCalendar from '@calendar/AddCalendar'
+import ListExerciseSelect from '@selecting/ListExerciseSelect'
 const TabsIcon = ({ ...props }) => {
     const { focused, iconActive, iniconActive } = props
     return (
@@ -98,6 +99,10 @@ const tabScreen = () => {
                         <Scene
                             component={AddCalendar}
                             key='addCalendar'
+                        />
+                        <Scene
+                            component={ListExerciseSelect}
+                            key='listExerciseSelect'
                         />
                     </Stack>
 

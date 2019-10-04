@@ -20,8 +20,8 @@ export default class AddCalendar extends Component {
             selectDate: '',
             selectExercise: [],
             isDateTimePickerVisible: false,
-            tableHead:[Messages.calendarScreen.colNameExercise, Messages.calendarScreen.colRound, Messages.calendarScreen.options],
-            tableData:[],
+            tableHead: [Messages.calendarScreen.colNameExercise, Messages.calendarScreen.colRound, Messages.calendarScreen.options],
+            tableData: [],
         }
     }
 
@@ -50,11 +50,12 @@ export default class AddCalendar extends Component {
 
                         <Input
                             placeholder={Messages.loginScreen.addname}
-                            containerStyle={styles.input}
-                            onChangeText={(text) => this.setState({ selectName: text })}
-                            rightIcon={<Icon name='plus' size={24} onPress={()=>
-                                Actions.members()}/>}
-                        />
+                            containerStyle={styles.input}                                                 
+                            onChange={() => this.setState({selectName: this.props.getName})}
+                            rightIcon={<Icon name='plus' size={24} onPress={() =>
+                                Actions.members({action : (text)=> this.setState({selectName:text})})} />}
+                            value={this.state.selectName}
+                        />                     
 
                         <Input
                             placeholder={Messages.calendarScreen.addDateCalendar}
@@ -73,14 +74,17 @@ export default class AddCalendar extends Component {
                         <Button
                             title={Messages.calendarScreen.selectExercise}
                             containerStyle={styles.input}
-                            buttonStyle={{backgroundColor:AppColors.background, width: AppSizes.widthInput }}
+                            buttonStyle={{ backgroundColor: AppColors.background, width: AppSizes.widthInput }}
+                            onPress={()=>{
+                                Actions.listExerciseSelect()
+                            }}
                         />
                     </View>
 
                     <Table style={styles.table}
                         borderStyle={{ borderWidth: 1, borderColor: 'black' }}
-                        >
-                        <Row data={this.state.tableHead} style={styles.head} textStyle={styles.text}/>
+                    >
+                        <Row data={this.state.tableHead} style={styles.head} textStyle={styles.text} />
                         <Rows data={this.state.tableData} textStyle={styles.text} />
                     </Table>
 
@@ -95,7 +99,7 @@ export default class AddCalendar extends Component {
                             ) {
                                 alert(Messages.loginScreen.notifi, Messages.loginScreen.msgInfo)
                             }
-                            else{
+                            else {
 
                             }
                         }}
@@ -131,8 +135,8 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: '#f1f8ff'
     },
-    table:{
-        width:'100%' ,
+    table: {
+        width: '100%',
         marginTop: 24,
         backgroundColor: AppColors.background,
     },

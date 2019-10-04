@@ -17,6 +17,7 @@ export default {
         bodymath:'Điểm thể hình',
         msg:'Bạn chưa nhập tài khoản hoặc mật khẩu',
         msgInfo:'Bạn nhập thiếu thông tin!',
+        phoneNumber:'Nhập số điện thoại',
         save:'Lưu',
     },
     calendarScreen:{
