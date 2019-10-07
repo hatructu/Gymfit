@@ -15,6 +15,7 @@ import Register from '@register/Register'
 import Members from '@calendar/Members'
 import AddCalendar from '@calendar/AddCalendar'
 import ListExerciseSelect from '@selecting/ListExerciseSelect'
+import UserDetail from './user/UserDetail'
 const TabsIcon = ({ ...props }) => {
     const { focused, iconActive, iniconActive } = props
     return (
@@ -60,6 +61,10 @@ const tabScreen = () => {
                 <Scene
                     component={AddCalendar}
                     key='addCalendar'
+                />
+                <Scene
+                    component={UserDetail}
+                    key='userDetail'
                 />
                 <Scene
                     hideNavBar

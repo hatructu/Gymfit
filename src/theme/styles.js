@@ -29,8 +29,11 @@ export default {
     width:Sizes.buttonSizeWidth,
     height:Sizes.buttonSizeBase,
     paddingHorizontal: Sizes.paddingSml,
-    color:Colors.white
+    color:Colors.white,
+    margin:Sizes.paddingXXSml,
   },
+
+  
   button:{
     width:Sizes.buttonSizeWidth,
     margin:Sizes.paddingSml,

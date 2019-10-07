@@ -7,6 +7,7 @@ import { Data, GYMER } from '@datas'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { AppColors, AppSizes } from '@theme'
 import Swipeout from 'react-native-swipeout'
+import { Actions } from 'react-native-router-flux'
 
 export default class ListMembers extends Component {
     constructor(props) {
@@ -50,6 +51,7 @@ export default class ListMembers extends Component {
             >
 
                 <TouchableOpacity                   
+                onPress = {()=>{Actions.userDetail()}}
                 >
                     <View>
                         <ListItem
@@ -65,6 +67,7 @@ export default class ListMembers extends Component {
         )
     }
     render() {
+        console.log('haibt: ', JSON.stringify(this.state.listData))
         return (
             <ScrollView>
                 <View>
