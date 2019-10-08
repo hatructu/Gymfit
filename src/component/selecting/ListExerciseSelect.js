@@ -39,29 +39,24 @@ export default class ListMembers extends Component {
         return (
             <View>
                 <View
-                    style={{ height: '20%', }}
+                    style={{ height: '30%', justifyContent: 'center' }}
                 >
                     <Header
-                        leftComponent={
-                            <TouchableOpacity
-                                onPress={() => {
-                                    let filterSelect = _.filter(this.state.listData, itemData => itemData.isChecked)
-                                    getDataTable && getDataTable(filterSelect)                                  
-                                    Actions.pop()
-                                }}
-                            >
-                                <Text style={styles.saveText}>Lưu</Text>
-                            </TouchableOpacity>
-                        }
+                        leftComponent={{
+                            text: 'Lưu', style:{color:'#fff'}, onPress: () => {
+                                let filterSelect = _.filter(this.state.listData, itemData => itemData.isChecked)
+                                getDataTable && getDataTable(filterSelect)
+                                Actions.pop()
+                            }
+                        }}
                         backgroundColor={AppColors.background}
-                        containerStyle={{ flex: 1, justifyContent: 'space-between' }}
                     />
                 </View>
                 <ScrollView>
                     <View>
                         <FlatList
                             data={this.state.listData}
-                            renderItem={({ item, index }) => {
+                            renderItem={({ item }) => {
                                 return (
                                     this.customItem(item)
                                 )
@@ -105,7 +100,6 @@ const styles = StyleSheet.create({
         fontSize: AppSizes.fontLarge,
         alignItems: 'center',
         color: '#fff',
-        justifyContent: 'center',
-        marginBottom: '50%',
+        //justifyContent: 'center',
     }
 })

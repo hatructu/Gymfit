@@ -42,15 +42,15 @@ export default class AddExercise extends Component {
   validation = () => {};
 
   choosePhoto = () => {
-    // alert('clicked')
-    // const options = {
-    //     title: 'Select Images',
+    alert('clicked')
+    const options = {
+        title: 'Select Images',
 
-    //     storageOptions: {
-    //       skipBackup: true,
-    //       path: 'images',
-    //     },
-    //   };
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+      };
     ImagePicker.launchImageLibrary(
       {noData: true, mediaType: 'photo'},
       response => {

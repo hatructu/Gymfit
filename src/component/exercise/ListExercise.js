@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -8,10 +8,10 @@ import {
   SafeAreaView,
   TouchableOpacity
 } from 'react-native';
-import {Icon} from 'react-native-elements';
-import {Actions} from 'react-native-router-flux';
+import { Icon } from 'react-native-elements';
+import { Actions } from 'react-native-router-flux';
 import ActionButton from 'react-native-circular-action-menu';
-import {AppColors, AppFonts, AppStyles, AppSizes} from '@theme';
+import { AppColors, AppFonts, AppStyles, AppSizes } from '@theme';
 import {
   Data,
   TABLE_USER,
@@ -29,29 +29,28 @@ class ListItem extends Component {
     item = this.props.item
     return (
       <Swipeout
-        style={{margin: 5, borderRadius: 5}}
+        style={{ margin: 5, borderRadius: 5 }}
         right={[
           {
             text: 'Delete',
             backgroundColor: '#FF6C6C',
             onPress: () => {
-              Data.write(() => {
-                Data.delete(item);
-              });
-            },
-          },
+              Data.write(() => Data.delete(item)
+              )
+            }
+          }
         ]}>
-        <TouchableOpacity onPress={()=>Actions.exerciseDetail({dataExercise: item})}>
+        <TouchableOpacity onPress={() => Actions.exerciseDetail({ dataExercise: item })}>
           <View
-            style={{ flex: 1, flexDirection: 'row', width:350 }}>
+            style={{ flex: 1, flexDirection: 'row', width: 350 }}>
             <Image
-              style={{width: 100, height: 80, margin: 10}}
+              style={{ width: 100, height: 80, margin: 10 }}
               // source={require('@icons/event.png')}
-              source={{uri: this.props.item.image}}
+              source={{ uri: this.props.item.image }}
             />
             <View
-              style={{flex: 1, flexDirection: 'column', margin: 10, justifyContent: 'center',}}>
-              <Text style={{fontSize: AppSizes.fontMedium}}>
+              style={{ flex: 1, flexDirection: 'column', margin: 10, justifyContent: 'center', }}>
+              <Text style={{ fontSize: AppSizes.fontMedium }}>
                 Tên bài tập : {this.props.item.name}
               </Text>
               <Text>Số hiệp : {this.props.item.round}</Text>
@@ -77,44 +76,50 @@ export default class ListExercise extends Component {
       ...this.state,
       listData
     }
-    // var data = Data.objects(EXERCISE);
-    // this.state = {listData: data};
   }
 
   getData = () => {
     const listData = Data.objects(EXERCISE)
     return listData
-}
+  }
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: AppColors.gray, alignItems:'center', justifyContent:'flex-start'}}>
-        <SafeAreaView style={{flex: 1,alignItems:'center',  justifyContent:'flex-end'}}>
+      <View style={styles.container}>
+        <SafeAreaView style={{flex:1}}>
           <Text
             style={{
-              fontSize:AppSizes.fontXL,
+              fontSize: AppSizes.fontXL,
               color: '#fff',
             }}>
             Danh sách các bài tập
           </Text>
-          <FlatList
-            data={this.state.listData}
-            renderItem={({item, index}) => {
-              return <ListItem item={item} index={index}></ListItem>;
-            }}
-          />
+
+          <View>
+            <FlatList
+              data={this.state.listData}
+              renderItem={({ item }) => {
+                return <ListItem item={item} />
+              }}
+            />
+          </View>
           <ActionButton
             buttonColor={AppColors.background}
             position="right"
             style={styles.actionBtn}
-            onPress={() => Actions.addexercise()}></ActionButton>
+            onPress={() => Actions.addexercise()}
+          />
         </SafeAreaView>
       </View>
-    );
+    )
   }
 }
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+  },
   actionBtn: {
     justifyContent: 'flex-end',
+    zIndex: 100,
   },
-});
+})
