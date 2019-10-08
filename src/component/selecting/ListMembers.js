@@ -30,7 +30,7 @@ export default class ListMembers extends Component {
     }
 
     customItem = (item) => {
-    
+
         return (
             <Swipeout
                 right={
@@ -46,13 +46,8 @@ export default class ListMembers extends Component {
                     ]
                 }
             >
-<<<<<<< HEAD
-                
-                <TouchableOpacity                   
-                onPress = {()=>{Actions.userDetail({dataMember: item})}}
-=======
                 <TouchableOpacity
->>>>>>> chay demo
+                    onPress={() => { Actions.userDetail({ dataMember: item }) }}
                 >
                     <View>
                         <ListItem
@@ -73,14 +68,14 @@ export default class ListMembers extends Component {
             <ScrollView>
                 <View>
                     <SafeAreaView>
-                    <FlatList
-                        data={this.state.listData}
-                        renderItem={({ item }) => {
-                            return (
-                                this.customItem(item)
-                            )
-                        }}
-                    />
+                        <FlatList
+                            data={this.state.listData}
+                            renderItem={({ item }) => {
+                                return (
+                                    this.customItem(item)
+                                )
+                            }}
+                        />
                     </SafeAreaView>
                 </View>
             </ScrollView>
