@@ -10,7 +10,9 @@ export default class Members extends Component{
         return(
             <View>
                 <ListMemberSelect  
-                    action={this.props.action}
+                    action={
+                        this.props.action
+                    }
                 />
             </View>
         )

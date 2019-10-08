@@ -45,7 +45,8 @@ export const Calendar = {
     name: CALENDAR,
     properties: {
         id: 'int?',
-        date: 'int?',
+        date: 'string?',
+        name_gymer:'string?',
         id_gymer:'int?',
         status:'bool?'
     }

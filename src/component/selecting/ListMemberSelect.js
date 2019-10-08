@@ -34,10 +34,9 @@ export default class ListMembers extends Component {
         return (
             <Swipeout
             >
-
                 <TouchableOpacity  
                     onPress={()=>{
-                        action && action(item.name)
+                        action && action(item)
                         Actions.pop()
                     }}                 
                 >

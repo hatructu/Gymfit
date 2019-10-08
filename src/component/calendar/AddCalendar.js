@@ -1,34 +1,28 @@
 import React, { Component } from 'react'
 import {
-    View, Text, StyleSheet, TouchableOpacity, Image, ScrollView,
+    View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList, Alert,
 } from 'react-native'
-import { Input, Button, } from 'react-native-elements'
+import { Input, Button, ListItem } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux'
-import { Data,
-    TABLE_USER,
-    GYMER,
-    EXERCISE,
-    CALENDAR,
-    CALENDAR_DETAIL, } from '@datas'
+import { Data, CALENDAR } from '@datas'
 import { Messages } from '@constant'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { AppColors, AppSizes } from '@theme'
 import moment from 'moment'
 import DateTimePicker from 'react-native-modal-datetime-picker'
-import { Table, Row, Rows } from 'react-native-table-component'
+import _ from 'lodash'
 
 export default class AddCalendar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selectName: '',
-            selectDate: '',
+            selectNameMember: '',
+            selectID: 0,
+            selectDate: 0,
+            listName: [],
             selectExercise: [],
             isDateTimePickerVisible: false,
-
-            tableHead: [Messages.calendarScreen.colNameExercise, Messages.calendarScreen.colRound, Messages.calendarScreen.options],
             tableData: [],
-
         }
     }
 
@@ -41,32 +35,69 @@ export default class AddCalendar extends Component {
     }
 
     handleDatePicked = date => {
-        this.setState({ selectDate: moment(date).format('DD/MM/YYYY') })
+        let dateTime = moment(date).format('DD/MM/YYYY')
+        this.setState({ selectDate: dateTime})
         this.hideDateTimePicker()
     }
-    
+
+    // hien thi danh sach cac hoc vien
+    customItem = (item) => {
+        return (
+            <TouchableOpacity
+            >
+                <View>
+                    <ListItem
+                        leftAvatar={{ source: { uri: item.avatar } }}
+                        title={item.name}
+                        subtitle={item.bodymath}
+                        bottomDivider
+                    />
+
+                </View>
+            </TouchableOpacity>
+        )
+    }
+
+    // hien thij danh sach cac bai tap
+    customExercise = (item) => {
+        return (
+            <View>
+                <ListItem
+                    title={item.name}
+                    rightIcon={<Icon name='times-circle' size={24} onPress={() => {
+                        let selectExerciseClone = this.state.tableData
+                        _.remove(selectExerciseClone, itemEx => itemEx.id == item.id)
+                        return this.setState({ tableData: selectExerciseClone })
+                    }} />}
+                    bottomDivider
+                />
+            </View>
+        )
+    }
 
     render() {
         return (
             <ScrollView>
                 <View style={styles.container}>
+                    {/* // tieu de man hinh */}
                     <View>
                         <Text style={styles.tittle}>{Messages.calendarScreen.addCalendarTitle}</Text>
                     </View>
 
                     <View style={styles.inputView}>
-
                         <Input
                             placeholder={Messages.loginScreen.addname}
-
-                            containerStyle={styles.input}                                                 
-                            onChange={() => this.setState({selectName: this.props.getName})}
+                            containerStyle={styles.input}
+                            onChange={() => this.setState({ selectNameMember: this.props.getName })}
                             rightIcon={<Icon name='plus' size={24} onPress={() =>
-                                Actions.members({action : (text)=> this.setState({selectName:text})})} />}
-                            value={this.state.selectName}
-                        />                     
+                                Actions.members({ action: (text) => {
+                                    this.setState({ selectNameMember: text.name }),
+                                    this.setState({selectID : text.id})
+                            }})} />}
+                            value={this.state.selectNameMember}                     
+                        />
 
-
+                        {/* nhap ngay */}
                         <Input
                             placeholder={Messages.calendarScreen.addDateCalendar}
                             value={this.state.selectDate}
@@ -85,32 +116,46 @@ export default class AddCalendar extends Component {
                             title={Messages.calendarScreen.selectExercise}
                             containerStyle={styles.input}
                             buttonStyle={{ backgroundColor: AppColors.background, width: AppSizes.widthInput }}
-                            onPress={()=>{
-                                Actions.listExerciseSelect()
+                            onPress={() => {
+                                Actions.listExerciseSelect({
+                                    getDataTable: (listExercise) => {
+                                        this.setState({ tableData: listExercise })
+                                    }
+                                })
                             }}
                         />
                     </View>
 
-                    <Table style={styles.table}
-                        borderStyle={{ borderWidth: 1, borderColor: 'black' }}
-                    >
-                        <Row data={this.state.tableHead} style={styles.head} textStyle={styles.text} />
-                        <Rows data={this.state.tableData} textStyle={styles.text} />
-                    </Table>
-
+                    <View style={styles.table}>
+                        <FlatList
+                            data={this.state.tableData}
+                            renderItem={({ item }) => {
+                                return this.customExercise(item)
+                            }}
+                        />
+                    </View>
                     <Button
                         title={Messages.loginScreen.save}
                         containerStyle={styles.input}
                         buttonStyle={{ backgroundColor: AppColors.background, width: AppSizes.widthInput }}
                         onPress={() => {
                             if (this.state.selectDate.length == 0 ||
-                                this.state.selectName.length == 0 ||
-                                this.state.selectExercise.length == 0
+                                this.state.selectNameMember.length == 0 ||
+                                this.state.tableData.length == 0
                             ) {
-                                alert(Messages.loginScreen.notifi, Messages.loginScreen.msgInfo)
+                                Alert.alert(Messages.loginScreen.notifi, Messages.loginScreen.msgInfo)
                             }
                             else {
-
+                                Data.write(() => {
+                                    Data.create(CALENDAR, {
+                                        id: Math.floor(Date.now() / 1000),
+                                        date: this.state.selectDate,
+                                        status: false,
+                                        id_gymer: this.state.selectID,
+                                        name_gymer: this.state.selectNameMember,
+                                    })
+                                })
+                                Actions.pop()
                             }
                         }}
                     />
@@ -146,9 +191,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#f1f8ff'
     },
     table: {
-        width: '100%',
+        width: '80%',
         marginTop: 24,
-        backgroundColor: AppColors.background,
+        backgroundColor: 'red',
     },
 
 

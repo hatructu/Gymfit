@@ -36,23 +36,23 @@ export default class ListMembers extends Component {
                 right={
                     [
                         {
-                            component: (
-                                <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1, backgroundColor: AppColors.backgroundBtn }}>
-                                    <Icon name='trash' color='#FF0000' size={30} type='font-awesome' />
-                                </View>
-                            ),
+                            component: (<View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                                <Icon name='trash' size={30} />
+                            </View>),
                             onPress: () => {
-                                Data.write(() => {
-                                    Data.delete(item)
-                                })
+                                Data.write(() => Data.delete(item))
                             }
                         }
                     ]
                 }
             >
+<<<<<<< HEAD
                 
                 <TouchableOpacity                   
                 onPress = {()=>{Actions.userDetail({dataMember: item})}}
+=======
+                <TouchableOpacity
+>>>>>>> chay demo
                 >
                     <View>
                         <ListItem
@@ -75,7 +75,7 @@ export default class ListMembers extends Component {
                     <SafeAreaView>
                     <FlatList
                         data={this.state.listData}
-                        renderItem={({ item, index }) => {
+                        renderItem={({ item }) => {
                             return (
                                 this.customItem(item)
                             )

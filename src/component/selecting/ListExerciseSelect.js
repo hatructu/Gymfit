@@ -6,7 +6,7 @@ import { CheckBox, Header } from 'react-native-elements'
 import { Data, EXERCISE } from '@datas'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { AppColors, AppSizes } from '@theme'
-import Swipeout from 'react-native-swipeout'
+import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
 export default class ListMembers extends Component {
@@ -35,7 +35,7 @@ export default class ListMembers extends Component {
 
 
     render() {
-
+        const { getDataTable } = this.props
         return (
             <View>
                 <View
@@ -44,12 +44,10 @@ export default class ListMembers extends Component {
                     <Header
                         leftComponent={
                             <TouchableOpacity
-                                onPress={()=>{                                  
-                                   let filterSelect = _.filter(this.state.listData, itemData=>
-                                        itemData.isChecked
-                                    )                                  
-                                    console.log('van:', filterSelect)
-                                    
+                                onPress={() => {
+                                    let filterSelect = _.filter(this.state.listData, itemData => itemData.isChecked)
+                                    getDataTable && getDataTable(filterSelect)                                  
+                                    Actions.pop()
                                 }}
                             >
                                 <Text style={styles.saveText}>Lưu</Text>
@@ -75,35 +73,29 @@ export default class ListMembers extends Component {
         )
     }
 
-
-
     customItem = (item) => {
-
         return (
-            <Swipeout
+            <TouchableOpacity
             >
-                <TouchableOpacity
-                >
-                    <View>
-                        <CheckBox
-                            title={item.name}
-                            onPress={() => {
-                                let listDataClone = this.state.listData
-                                _.map(listDataClone, itemData => {
-                                    if (itemData.id === item.id) {
-                                        itemData.isChecked = !itemData.isChecked
-                                    }
-                                    return itemData
-                                })
-                                this.setState({ listData: listDataClone })
+                <View>
+                    <CheckBox
+                        title={item.name}
+                        onPress={() => {
+                            let listDataClone = this.state.listData
+                            _.map(listDataClone, itemData => {
+                                if (itemData.id === item.id) {
+                                    itemData.isChecked = !itemData.isChecked
+                                }
+                                return itemData
+                            })
+                            this.setState({ listData: listDataClone })
 
-                            }}
-                            checked={item.isChecked}
-                        />
+                        }}
+                        checked={item.isChecked}
+                    />
 
-                    </View>
-                </TouchableOpacity>
-            </Swipeout>
+                </View>
+            </TouchableOpacity>
         )
     }
 }
