@@ -41,7 +41,7 @@ class ListItem extends Component {
             },
           },
         ]}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>Actions.exerciseDetail({dataExercise: item})}>
           <View
             style={{ flex: 1, flexDirection: 'row', width:350 }}>
             <Image
@@ -77,8 +77,8 @@ export default class ListExercise extends Component {
       ...this.state,
       listData
     }
-    var data = Data.objects(EXERCISE);
-    this.state = {listData: data};
+    // var data = Data.objects(EXERCISE);
+    // this.state = {listData: data};
   }
 
   getData = () => {

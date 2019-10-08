@@ -30,6 +30,7 @@ export default class ListMembers extends Component {
     }
 
     customItem = (item) => {
+    
         return (
             <Swipeout
                 right={
@@ -49,9 +50,9 @@ export default class ListMembers extends Component {
                     ]
                 }
             >
-
+                
                 <TouchableOpacity                   
-                onPress = {()=>{Actions.userDetail()}}
+                onPress = {()=>{Actions.userDetail({dataMember: item})}}
                 >
                     <View>
                         <ListItem

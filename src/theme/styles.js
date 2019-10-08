@@ -33,6 +33,20 @@ export default {
     margin:Sizes.paddingXXSml,
   },
 
+  textView:{
+    // borderRadius:Sizes.paddingSml,
+    // borderWidth:Sizes.borderWidth,
+    // borderColor:Colors.gray,
+    width:Sizes.buttonSizeWidth,
+    height:Sizes.buttonSizeBase,
+    paddingHorizontal: Sizes.paddingSml,
+    color:Colors.white,
+    margin:Sizes.paddingXXSml,
+    justifyContent:'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+  },
+
   
   button:{
     width:Sizes.buttonSizeWidth,
