@@ -15,7 +15,6 @@ export default class UserDetail extends Component {
       height: 0,
       bodymath: 0,
       phoneNumber: 0,
-  
     };
     
     this.item = props.dataMember

@@ -104,7 +104,7 @@ export default class ListExercise extends Component {
           />
           <ActionButton
             buttonColor={AppColors.background}
-            position="center"
+            position="right"
             style={styles.actionBtn}
             onPress={() => Actions.addexercise()}></ActionButton>
         </SafeAreaView>
