@@ -31,13 +31,13 @@ export default class Register extends Component{
         var user_detail = Data.objects(TABLE_USER).filtered(`username = "${username}"`)
         
         if(this.state.username.length == ""){
-            Alert.alert('Không được để trống tài khoản')
+            Alert.alert(Messages.registerScreen.alertNullUsername)
         } if( this.state.email.length ==""){
-            Alert.alert('Không được để trống email')
+            Alert.alert(Messages.registerScreen.alertNullEmail)
         } if( this.state.password.length==""){
-            Alert.alert('Không được để trống mật khẩu')
+            Alert.alert(Messages.registerScreen.alertNullPassword)
         } if(user_detail.length>0){
-            alert('Tên tài khoản đã bị trùng, mời nhập lại')
+            alert(Messages.registerScreen.alertDuplicate)
         } else{
             Data.write(()=>{
                 Data.create(TABLE_USER,{
@@ -48,7 +48,6 @@ export default class Register extends Component{
                 })
             })
             alert('successful')
-            console.log("Thang:", JSON.stringify(Data.objects(TABLE_USER) ))
             Actions.replace('login')
             
         }
@@ -79,6 +78,7 @@ export default class Register extends Component{
                     <TextInput style={AppStyles.textInput}
                         placeholder={Messages.registerScreen.inputPassword}
                         placeholderTextColor={AppColors.gray}
+                        secureTextEntry={true}
                         onChangeText={(text)=>this.setState({password:text})}
                     />
                     <Text>{this.state.Error}</Text>

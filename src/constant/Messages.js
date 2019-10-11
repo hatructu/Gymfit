@@ -10,7 +10,8 @@ export default {
         forgotPassword: 'Quên mật khẩu?',
         version:'version 1.0',
         addmember:'Thêm Thành Viên',
-        addname:'Nhập tên thành viên',
+        editMemebr:'Sửa Thành Viên',
+        addname:'Nhập tên',
         adddob: '01/01/1990',
         addweight:'Nhập cân nặng(kg)',
         addheight:'Nhập chiều cao(cm)',
@@ -38,6 +39,10 @@ export default {
         inputUserName: "Nhập tài khoản",
         inputPassword: "Nhập mật khẩu",
         inputEmail: "Nhập email",
+        alertNullUsername:'Không được để trống tài khoản',
+        alertNullEmail:'Không được để trống email',
+        alertNullPassword:'Không được để trống mật khẩu',
+        alertDuplicate:'Tên tài khoản đã bị trùng, mời nhập lại',
     },
 
     addExercise:{

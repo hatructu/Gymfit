@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import {
     View, ScrollView, FlatList, TouchableOpacity, Text, StyleSheet
 } from 'react-native'
-import { CheckBox, Header } from 'react-native-elements'
+import { CheckBox, Header, Card } from 'react-native-elements'
 import { Data, EXERCISE } from '@datas'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { AppColors, AppSizes } from '@theme'
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
@@ -38,20 +38,19 @@ export default class ListMembers extends Component {
         const { getDataTable } = this.props
         return (
             <View>
-                <View
-                    style={{ height: '30%', justifyContent: 'center' }}
-                >
-                    <Header
-                        leftComponent={{
-                            text: 'Lưu', style:{color:'#fff'}, onPress: () => {
-                                let filterSelect = _.filter(this.state.listData, itemData => itemData.isChecked)
-                                getDataTable && getDataTable(filterSelect)
-                                Actions.pop()
-                            }
-                        }}
-                        backgroundColor={AppColors.background}
-                    />
-                </View>
+                <Header
+                    containerStyle={{ height: '20%', backgroundColor: '#fff', justifyContent: 'center', alignItems: 'baseline' }}
+                    style={{ justifyContent: 'center' }}
+                    leftComponent={{ icon: 'arrow-back', onPress: () => { Actions.pop() } }}
+                    rightComponent={{
+                        icon: 'done', onPress: () => {
+                            let filterSelect = _.filter(this.state.listData, itemData => itemData.isChecked)
+                            getDataTable && getDataTable(filterSelect)
+                            Actions.pop()
+                        }
+                    }}
+                />
+
                 <ScrollView>
                     <View>
                         <FlatList

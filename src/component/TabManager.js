@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {View, Image} from 'react-native';
-import {Router, Scene, Stack, Tabs} from 'react-native-router-flux';
+import React, { Component } from 'react';
+import { View, Image } from 'react-native';
+import { Router, Scene, Stack, Tabs } from 'react-native-router-flux';
 import ListUser from '@user/ListUser';
 import ListExercise from '@exercise/ListExercise';
 import Calendar from '@calendar/Calendar';
@@ -14,8 +14,9 @@ import Members from '@calendar/Members';
 import AddCalendar from '@calendar/AddCalendar';
 import ListExerciseSelect from '@selecting/ListExerciseSelect';
 import UserDetail from './user/UserDetail';
-const TabsIcon = ({...props}) => {
-  const {focused, iconActive, iniconActive} = props;
+import { Icon } from 'react-native-vector-icons/FontAwesome';
+const TabsIcon = ({ ...props }) => {
+  const { focused, iconActive, iniconActive } = props;
   return (
     <View>
       <Image source={focused ? iconActive : iniconActive} />
@@ -28,14 +29,16 @@ const tabScreen = () => {
     <Router>
       <Stack hideNavBar={true}>
         <Scene hideNavBar key="login" component={Login} initial />
-        <Scene hideNavBar key="addmembers" component={AddMembers} />
-        <Scene hideNavBar key="addexercise" component={AddExercise} />
+        <Scene hideNavBar={false} key="addmembers" component={AddMembers} />
+        <Scene hideNavBar={false} key="addexercise" component={AddExercise} />
         <Scene key="register" component={Register} />
-        <Scene component={ListExerciseSelect} key="listExerciseSelect" />
-
-        <Scene component={AddCalendar} key="addCalendar" />
-        
-        <Scene hideNavBar key="members" component={Members} />
+        <Scene
+          hideNavBar={true}
+          component={ListExerciseSelect}
+          key="listExerciseSelect"
+        />
+        <Scene hideNavBar={false} component={AddCalendar} key="addCalendar" />
+        <Scene hideNavBar={false} key="members" component={Members} />
         <Tabs showLabel={false} key="tabs">
           <Stack
             hideNavBar={true}

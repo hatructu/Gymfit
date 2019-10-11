@@ -33,6 +33,7 @@ export default class ListMembers extends Component {
 
         return (
             <Swipeout
+                autoClose={true}
                 right={
                     [
                         {
@@ -42,8 +43,16 @@ export default class ListMembers extends Component {
                             onPress: () => {
                                 Data.write(() => Data.delete(item))
                             }
+                        },
+                        {
+                            component: (<View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                                <Icon name='edit' size={30} />
+                            </View>),
+                            // gửi thông tin của item dc chọn sang màn hình sửa
+                            onPress:()=>{Actions.addmembers({sendData : item})}
                         }
                     ]
+                   
                 }
             >
                 <TouchableOpacity

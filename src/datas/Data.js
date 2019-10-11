@@ -18,6 +18,7 @@ export const TableUser = {
 }
 export const Gymer = {
     name: GYMER,
+    primaryKey:'id',
     properties: {
         id: 'int?',
         name: 'string?',
@@ -32,6 +33,7 @@ export const Gymer = {
 
 export const Exercise = {
     name: EXERCISE,
+    primaryKey:'id',
     properties: {
         id: 'int?',
         name: 'string?',
@@ -43,9 +45,10 @@ export const Exercise = {
 
 export const Calendar = {
     name: CALENDAR,
+    primaryKey:'id',
     properties: {
         id: 'int?',
-        date: 'string?',
+        createDate: 'string?',
         name_gymer:'string?',
         id_gymer:'int?',
         status:'bool?'
@@ -54,6 +57,7 @@ export const Calendar = {
 
 export const Calendar_detail = {
     name: CALENDAR_DETAIL,
+    primaryKey:'id',
     properties: {
         id: 'int?',
         date:'int?',
